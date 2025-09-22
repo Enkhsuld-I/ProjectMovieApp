@@ -8,9 +8,9 @@ export const Header = () => {
   return (
     <header className="w-full">
       <div className="max-w-[1280px] flex justify-between m-auto items-center py-3">
-        <div>
+        <a href=""><div>
           <img src="/assets/moviez.png" className="h-5" />
-        </div>
+        </div></a>
         <div className="flex gap-5">
           <GenreDropdown />
           <div className="flex items-center">

@@ -12,7 +12,7 @@ export async function HomePage() {
   );
 
   return (
-    <div>
+    <div className="pl-20 pr-20">
       <MovieCarousel movies={nowPlayingMovies.results} />
       <MoviesContainer
         movies={upcomingMovies.results}

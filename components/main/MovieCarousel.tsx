@@ -13,6 +13,10 @@ import {
 import { MovieType, TrailerResponseType } from "@/types";
 import { getMovieTrailers } from "@/utils/get-data";
 import { TrailerDialog } from "../trailer/TrailerDialog";
+import { Button } from "../ui/button";
+import { MdOutlinePlayArrow } from "react-icons/md";
+import { Star } from "lucide-react";
+ 
 
 type MovieCarouselProps = {
   movies: MovieType[];
@@ -40,8 +44,10 @@ export function MovieCarousel({ movies }: MovieCarouselProps) {
     <>
       <Carousel setApi={setApi} className="w-screen">
         <CarouselContent>
-          {movies.map((movie, index) => (
-            <MovieCarouselItem key={index} movie={movie} />
+          {movies.map((movie, index,) => (
+            <MovieCarouselItem key={index} movie={movie} 
+            />
+          
           ))}
         </CarouselContent>
         <CarouselPrevious className="left-13" />
@@ -80,15 +86,32 @@ const MovieCarouselItem = ({ movie }: { movie: MovieType }) => {
   }, []);
 
   return (
-    <CarouselItem>
-      <div className="p-1">
-        <Card>
-          <CardContent className="flex aspect-video max-h-[600px] items-center justify-center p-6">
-            <span className="text-4xl font-semibold">{movie.title}</span>
-            <TrailerDialog youtubeKey={trailerKey} />
-          </CardContent>
-        </Card>
-      </div>
-    </CarouselItem>
+   <CarouselItem
+              // key={index}
+              className=" relative h-160  bg-no-repeat bg-cover bg-center text-white"
+            >
+              <img
+                className="w-full  h-full"
+                src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+              />
+              <div className="p-1 absolute top-[108px] left-[140px]">
+                <div className="">
+                  <p>Now Playing :</p>
+                  <p className="text-[36px] font-bold">{movie.title}</p>
+                  <p className="flex gap-2 items-center text-[18px] pt-[10px]">
+                    <Star className="h-[28px] w-[28px] fill-[#FDe047]" color="#FDE047" />
+                    6.9<span className="text-[16px] color-[#71717A]">/10</span>
+                  </p>
+                  <p className="w-[500px] text-[12px] font-normal pt-[26px]">
+                    {" "}
+                    {movie.overview}
+                  </p>
+                  <Button className="bg-white text-black mt-4">
+                    <MdOutlinePlayArrow />
+                    Watch Trailer
+                  </Button>
+                </div>
+              </div>
+            </CarouselItem>
   );
 };

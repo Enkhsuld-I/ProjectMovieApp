@@ -15,14 +15,16 @@ export const MoviesContainer = ({
   link,
 }: MoviesContainerProps) => {
   return (
-    <div>
-      <div className="flex w-full justify-between">
+    <div className="m-auto max-w-[1280px]">
+      <div className="flex w-full justify-between mb-8">
         <h2 className="text-3xl font-bold">{title}</h2>
-        <Link className="flex items-center gap-2" href={`/more?title=${link}`}>
+         <Link className="flex items-center gap-2" href={`/more?title=${link}`}>
           <span>See more</span> <ChevronRight />
         </Link>
+        
       </div>
-      <div className="flex gap-4 flex-wrap">
+        
+      <div className="flex gap-8 flex-wrap mb-[52px]">
         {movies.slice(0, 10).map((movie) => (
           <MovieCard
             key={movie.id}
@@ -33,6 +35,7 @@ export const MoviesContainer = ({
           />
         ))}
       </div>
+    
     </div>
   );
 };
