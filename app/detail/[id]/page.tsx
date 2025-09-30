@@ -1,6 +1,7 @@
 import { TrailerDialog } from "@/components/trailer/TrailerDialog";
-import { TrailerResponseType } from "@/types";
+import { MovieType, TrailerResponseType } from "@/types";
 import { getMovieDetail, getMovieTrailers } from "@/utils/get-data";
+
 
 type DetailDynamicPageProps = {
   params: Promise<{ id: string }>;
@@ -25,13 +26,32 @@ const DetailDynamicPage = async ({ params }: DetailDynamicPageProps) => {
 
   const trailer = trailerData.results.find((item) => item.type === "Trailer");
 
+
+
   return (
-    <div className="text-2xl font-bold">
-      {movieDetailData.title}
+    <div className="max-w-[1440px] m-auto px-[180]">
+       <div className="text-[36px] font-bold">
+        {movieDetailData.title}
+       </div>
+       <h1>{movieDetailData.release_date}</h1>
+     
+     <div className="flex gap-8">
+     <img
+        className="w-[290px] h-[428px] "
+        src={`https://image.tmdb.org/t/p/original/${movieDetailData.backdrop_path}`}
+      />
+       <img
+          className="w-[760px] h-[428px]"
+          src={`https://image.tmdb.org/t/p/original/${movieDetailData.backdrop_path}`}
+        />
+        </div>
+              
       <>
         <TrailerDialog youtubeKey={trailer?.key} />
       </>
+    
     </div>
+   
   );
 };
 

@@ -25,7 +25,7 @@ export const MoviesContainer = ({
       </div>
         
       <div className="flex gap-8 flex-wrap mb-[52px]">
-        {movies.slice(0, 10).map((movie) => (
+        {movies.slice(0, 20).map((movie) => (
           <MovieCard
             key={movie.id}
             id={movie.id}
